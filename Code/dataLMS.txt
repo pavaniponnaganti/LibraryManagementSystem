@@ -1,0 +1,47 @@
+----------member table---------------------------------
+CREATE TABLE member
+(
+	memid int NOT NULL,
+	mname varchar(50) NOT NULL,
+	email varchar(100),
+	passwd varchar(30) NOT NULL,
+	PRIMARY KEY(memid)
+);
+
+INSERT INTO `member`(`memid`, `mname`, `email`, `passwd`) 
+VALUES (1,'hermione','hermione@gmail.com','hermione123'),
+(2,'harry','harry@gmail.com','harry123'),
+(3,'ron','ron@gmail.com','ron123'),
+(4,'snape','snape@gmail.com','snape123'),
+(5,'molly','molly@gmail.com','molly123'),
+(6,'fred','fred@gmail.com','fred123'),
+(7,'george','george@gmail.com','george123'),
+(8,'ginny','ginny@gmail.com','ginny123'),
+(9,'luna','luna@gmail.com','luna123'),
+(10,'neville','neville@gmail.com','neville123');
+
+------------books table-----------------------------------------------
+CREATE TABLE books
+(
+	bookid int NOT NULL,
+	title varchar(100),
+	author varchar(100),
+	availability varchar(20) NOT NULL,
+	shelf varchar(20),
+	memid int,
+	PRIMARY KEY(bookid),
+	FOREIGN KEY(memid) REFERENCES member(memid)
+);
+
+
+INSERT INTO `books`(`bookid`,`title`,`author',`availability`,`shelf`,`memid`) VALUES
+(1,'A first course in database systems','Jeffrey D. Ullman and Jennifer Widom','Available','RB-15',0),
+(2,'A first course in database systems','Jeffrey D. Ullman and Jennifer Widom','Unvailable','RB-15',1),
+(3,'Active rules in database systems','Norman W. Paton','Available','RB-11',0),
+(4,'Advance Oracle Tuning and Administration = Make your database','Aronoff, Eyal; Loney, Kevin; Sonawalla, Noorali','Unavailable','B13',3),
+(5,'Advanced concepts in operating systems : Distributed, Database, and Multiprocessor Operating Systems',	'Singhal, Mukesh; Shivaratri, Niranjan G.','Unvailable','B8',2),
+(6,'Advanced database query systems : techniques, applications and technologies','Li Yan and Zongmin Ma','Available','RB-29',0),
+(7,'Advances in databases : concepts, systems, and applications','Ramamohanarao Kotagiri','Available','RB-27',0),
+(8,'An Introduction to database systems','C.J.','Unavailable','B6',8),
+(9,'An introduction to database systems','Desai, Bipin C.','Unavailable','B6',10),
+(10,'An introduction to database systems','Desai, Bipin C.','Available','B6',0);
