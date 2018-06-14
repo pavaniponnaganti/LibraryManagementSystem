@@ -1,0 +1,11 @@
+..on 22/04/2016
+****admin.php completely edited****
+1. default1.css added
+2. change_pswd.php edited (to remove warning)
+3.made changes to issued books
+
+..on 23/04/2016
+****admin.php edited again****
+1. memberStatus.php added
+2. issue_book_by_admin.php added
+3. receive_book_by_admin.php added

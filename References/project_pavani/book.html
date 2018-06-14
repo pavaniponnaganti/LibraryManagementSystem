@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Search For a Book</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Quicksand:400,700" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="icon" href="images/library-icon.png" sizes="16x16" type="image/png">
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+<script type="text/javascript" src="book.js"> </script>
+
+</head>
+<body>
+
+<script language="javascript" type="text/javascript">
+	function ajaxFunction(){
+		var ajaxRequest;
+		ajaxRequest = new XMLHttpRequest();
+		ajaxRequest.onreadystatechange = function(){
+   
+        if(ajaxRequest.readyState == 4){
+         var ajaxDisplay = document.getElementById('ajaxDiv');
+         ajaxDisplay.innerHTML = ajaxRequest.responseText;
+      }
+   }
+   var optn="a";
+   if(document.getElementById('title').checked) {
+		optn="t";
+	}
+   var book = document.getElementById('book').value;
+   var queryString = "?book="+book;
+   queryString +=  "&option=" + optn;
+   
+   
+   ajaxRequest.open("GET", "ajax-example.php" + queryString, true);
+   ajaxRequest.send(null); 
+}
+
+</script>
+
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="http://localhost/dbms/project_poo/">Library</a></h1>
+			<div id="menu">
+				<ul>
+					<li class="current_page_item"><a href="http://localhost/dbms/project_poo/" accesskey="1" title="">Homepage</a></li>
+					<!--li><a href="#" accesskey="2" title="">Login</a></li-->
+					<li><a href="http://localhost/dbms/project_poo/book.html" accesskey="3" title="">Books</a></li>
+					<li><a href="http://localhost/dbms/project_poo/about us.php" accesskey="5" title="">About Us</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="page-wrapper">
+	<div id="page" class="container">
+		<div class="title">
+			<h2>Search...</h2>
+		</div>
+		<p></p>
+		<form name='myForm'>
+			Author/Title: <input type='text' id='book' />
+			<input type='button' class="astext" onclick='ajaxFunction()' value='Search'/>
+			<p>
+				<input type="radio" name="rname" id="title">Title</input> &nbsp &nbsp
+				<input type="radio" name="rname" id="author">Author</input>
+			</p>
+		</form>
+		<div id='ajaxDiv'></div>
+	</div>
+</div>
+
+</body>
+</html>
